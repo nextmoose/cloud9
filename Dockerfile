@@ -31,11 +31,8 @@ RUN \
             sed -i "s#127.0.0.1#0.0.0.0#g" /opt/docker/c9sdk/configs/standalone.js && \
             sed -i "s#opts[.]projectName = basename.opts[.]workspaceDir.;#opts.projectName = process.env.PROJECT_NAME#" /opt/docker/c9sdk/plugins/c9.vfs.standalone/standalone.js && \
             adduser user && \
-            mkdir /workspace && \
-            chown user:user /workspace && \
-            dnf install --assumeyes findutils && \
-            touch /opt/docker/entrypoint.env && \
-            chown user:user /opt/docker/entrypoint.env && \
+            mkdir /opt/docker/workspace && \
+            chown user:user /opt/docker/workspace && \
             dnf update --assumeyes && \
             dnf clean all
 USER user
