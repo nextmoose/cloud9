@@ -24,6 +24,7 @@ do
                     then
                         sh /opt/docker/extension/init.user.sh "${@}"
                     fi &&
+                    echo A PROJECT_NAME=${PROJECT_NAME} CLOUD9_PORT=${CLOUD9_PORT} &&
                     PROJECT_NAME="${PROJECT_NAME}" node /opt/docker/c9sdk/server.js --listen 0.0.0.0 -w /opt/docker/workspace -p ${CLOUD9_PORT} &&
                     shift ${#} &&
                     exit 0
@@ -47,5 +48,6 @@ done &&
         then
             sh /opt/docker/extension/init.user.sh "${@}"
         fi &&
+        echo B PROJECT_NAME=${PROJECT_NAME} CLOUD9_PORT=${CLOUD9_PORT} &&
         PROJECT_NAME="${PROJECT_NAME}" node /opt/docker/c9sdk/server.js --listen 0.0.0.0 -w /opt/docker/workspace -p ${CLOUD9_PORT} &&
         shift ${#}
