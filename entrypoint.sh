@@ -21,5 +21,11 @@ fi &&
     then
         sh /opt/docker/extension/init.user.sh "${@}"
     fi &&
+    if [ -f /opt/docker/ssh/config ]
+    then
+        (cat > /etc/ssh/ssh_config.d/cloud9.conf <<EOF
+EOF
+        )
+    fi &&
     PROJECT_NAME="${PROJECT_NAME}" node /opt/docker/c9sdk/server.js --listen 0.0.0.0 -w /opt/docker/workspace -p ${CLOUD9_PORT} &&
     shift ${#}
