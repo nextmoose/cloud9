@@ -54,7 +54,7 @@ ONBUILD COPY root /opt/docker/extension/
 ONBUILD RUN \
     if [ -d /opt/docker/extension/sbin ]; then ls -1 /opt/docker/extension/sbin | while read FILE; do cp /opt/docker/extension/sbin/${FILE} /usr/local/sbin/${FILE%.*} && chmod 0500 /usr/local/sbin/${FILE%.*}; done; fi && \
         if [ -d /opt/docker/extension/bin ]; then ls -1 /opt/docker/extension/bin | while read FILE; do cp /opt/docker/extension/bin/${FILE} /usr/local/bin/${FILE%.*} && chmod 0555 /usr/local/bin/${FILE%.*}; done; fi && \
-        if [ -f /opt/docker/extension/run.root.sh ]; then sh /opt/docker/extension/run.root.sh; fi && /
+        if [ -f /opt/docker/extension/run.root.sh ]; then sh /opt/docker/extension/run.root.sh; fi && \
         if [ -d /opt/docker/extension/completion ]; then ls -1 /opt/docker/extension/completion | while read FILE; do cp /opt/docker/extension/completion/${FILE} /etc/bash_completion; done; fi
 ONBUILD USER user
 ONBUILD RUN \
