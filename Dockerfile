@@ -33,14 +33,19 @@ RUN \
             adduser user && \
             mkdir /opt/docker/workspace && \
             chown user:user /opt/docker/workspace && \
-            dnf install --assumeyes sudo && \
+            dnf install --assumeyes sudo bash_completion && \
             echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/user && \
             chmod 0444 /etc/sudoers.d/user && \
             dnf update --assumeyes && \
             dnf clean all
 USER user
 WORKDIR /home/user
-RUN curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash
+RUN \
+    curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash && \
+        mkdir .ssh && \
+        mkdir .ssh/config.d && \
+        echo "Include ~/.ssh/config.d/*" > .ssh/config && \
+        chmod 0600 .ssh/config
 COPY entrypoint.sh /opt/docker/entrypoint.sh
 ENTRYPOINT ["sh", "/opt/docker/entrypoint.sh"]
 CMD []
