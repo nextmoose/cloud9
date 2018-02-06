@@ -46,7 +46,6 @@ RUN \
         mkdir .ssh/config.d && \
         echo "Include ~/.ssh/config.d/*" > .ssh/config && \
         chmod 0600 .ssh/config
-VOLUME /home
 COPY entrypoint.sh /opt/docker/entrypoint.sh
 ENTRYPOINT ["sh", "/opt/docker/entrypoint.sh"]
 CMD []
@@ -60,4 +59,6 @@ ONBUILD RUN \
 ONBUILD USER user
 ONBUILD RUN \
     if [ -f /opt/docker/extension/run.user.sh ]; then sh /opt/docker/extension/run.user.sh; fi
+ONBUILD VOLUME /home/user
+ONBUILD VOLUME /opt/docker/workspace
 
