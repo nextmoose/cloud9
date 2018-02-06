@@ -59,7 +59,7 @@ ONBUILD RUN \
 ONBUILD USER user
 ONBUILD RUN \
     if [ -f /opt/docker/extension/run.user.sh ]; then sh /opt/docker/extension/run.user.sh; fi && \
-        if [ -d /opt/docker/extension/ssh_config ]; then ls -1 /opt/docker/extension/ssh_config | while read FILE; do cp /opt/docker/extension/ssh_config /home/user/.ssh/config.d/${FILE%.*} && chmod 0600 /home/user/.ssh/config.d/${FILE%.*}; done; fi
+        if [ -d /opt/docker/extension/ssh_config ]; then ls -1 /opt/docker/extension/ssh_config | while read FILE; do cp /opt/docker/extension/ssh_config/${FILE} /home/user/.ssh/config.d/${FILE} && chmod 0600 /home/user/.ssh/config.d/${FILE%}; done; fi
 ONBUILD VOLUME /home/user
 ONBUILD VOLUME /opt/docker/workspace
 
