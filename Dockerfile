@@ -46,6 +46,7 @@ RUN \
         mkdir .ssh/config.d && \
         echo "Include ~/.ssh/config.d/*" > .ssh/config && \
         chmod 0600 .ssh/config
+VOLUME /home
 COPY entrypoint.sh /opt/docker/entrypoint.sh
 ENTRYPOINT ["sh", "/opt/docker/entrypoint.sh"]
 CMD []
