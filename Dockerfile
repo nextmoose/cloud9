@@ -33,7 +33,7 @@ RUN \
             adduser user && \
             mkdir /opt/docker/workspace && \
             chown user:user /opt/docker/workspace && \
-            dnf install --assumeyes sudo bash_completion && \
+            dnf install --assumeyes sudo bash-completion && \
             echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/user && \
             chmod 0444 /etc/sudoers.d/user && \
             dnf update --assumeyes && \
