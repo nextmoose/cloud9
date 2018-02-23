@@ -30,8 +30,6 @@ RUN \
             /home/user/c9sdk/scripts/install-sdk.sh && \
             sed -i "s#127.0.0.1#0.0.0.0#g" /home/user/c9sdk/configs/standalone.js && \
             sed -i "s#opts[.]projectName = basename.opts[.]workspaceDir.;#opts.projectName = process.env.PROJECT_NAME#" /home/user/c9sdk/plugins/c9.vfs.standalone/standalone.js && \
-            mkdir /home/user/workspace && \
-            chown user:user /home/user/workspace && \
             dnf install --assumeyes sudo bash-completion && \
             echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/user && \
             chmod 0444 /etc/sudoers.d/user && \
