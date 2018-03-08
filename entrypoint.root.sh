@@ -4,7 +4,7 @@ if [ -f /home/user/extension/parse.sh ]
 then
     sh /home/user/extension/parse.sh "${@}"
 fi &&
-    shift &&
+    shift ${#} &&
     if [ -f /home/user/extension/init.root.sh ]
     then
         sh /home/user/extension/init.root.sh
